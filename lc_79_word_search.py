@@ -2,25 +2,20 @@ class Solution:
     def exist(self, board, word):
         row = len(board)
         col = len(board[0])
-        #print(row, col)
-        #visited = [[False]*col for _ in range(row)]
         nv = row*col
         gotit = False
         for i in range(row):
             for j in range(col):
-                visited = [[False]*col for _ in range(row)]
-                gotit = self.checkIfExist(visited, board, word, nv, i, j)
-                if gotit:
-                    break
+                if board[i][j] == word[0]:
+                    visited = [[False]*col for _ in range(row)]
+                    gotit = self.checkIfExist(visited, board, word, nv, i, j)
+                    if gotit:
+                        break
             if gotit:
                 break
         return gotit
-
-        #return self.checkIfExist(visited, board, word, nv, 0, 0)
     
     def checkIfExist(self, visited, a, w, nv, r, c):
-        #if w == "":
-        #    return True
         if nv == 0:
             return False
         visited[r][c] = True
