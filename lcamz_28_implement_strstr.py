@@ -1,4 +1,7 @@
 class Solution:
+    '''
+    Boyer Moore algorithm
+    '''
     def strStr(self, hs, nd):
         M = len(nd)
         N = len(hs)
