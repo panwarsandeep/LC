@@ -1,5 +1,6 @@
 from collections import defaultdict
 class Solution:
+    '''
     def rob(self, nums):
         dp = [-1]*len(nums)
         def calc_max_amount(ind):
@@ -16,6 +17,20 @@ class Solution:
             dp[ind] = max(take_it, leave_it)
             return dp[ind]
         return calc_max_amount(0)
+    '''
+    
+    '''
+    space O(1)
+    simple solution
+    '''
+    def rob(self, houses):
+        adjacent_house, prev_house  = 0, 0 
+        for profit in houses:
+            current_house = max(profit + prev_house, adjacent_house)
+            print(profit, prev_house, adjacent_house, current_house)
+            prev_house = adjacent_house
+            adjacent_house = current_house 
+        return adjacent_house
 
    
 
