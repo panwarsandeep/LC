@@ -5,10 +5,10 @@ class Solution:
               h   o   r   s   e
           0   1   2   3   4   5
         -----------------------
-      0 | 1   1   1   1   1   1
-    r 1 | 1
-    o 2 | 1
-    s 3 | 1
+      0 | 0   1   2   3   4   5
+    r 1 | 1   1   2   2   3   4
+    o 2 | 2   2   1   2   3   4
+    s 3 | 3   3   2   2   2   3
 
     row represents word1 and col represents word2
     initialize first column and first row with 1,2,3.... this means if either of the string is empty, the operation required will the the insert
@@ -37,6 +37,13 @@ class Solution:
                     dp[i][j] = dp[i-1][j-1]
                 else:
                     dp[i][j] = 1 + min([dp[i-1][j], dp[i][j-1], dp[i-1][j-1]])
+        '''
+        print DP
+        for i in range(len(dp)):
+            for j in range(len(dp[0])):
+                print(str(dp[i][j])),
+            print("")
+        '''
         return dp[len2][len1]
 
    
@@ -46,6 +53,8 @@ if __name__ == '__main__':
     
     w1 = "intention"
     w2 = "execution"
+    w1 = "horse"
+    w2 = "ros"
     print(w1, w2)
     r = sol.minDistance(w1, w2)
     print(r)
