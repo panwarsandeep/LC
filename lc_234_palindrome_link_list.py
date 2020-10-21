@@ -65,7 +65,7 @@ class Solution:
             
 
 
-def reverseList(self, head):
+def reverseList(head):
         if not head:
             return None
         p = None
@@ -79,16 +79,14 @@ def reverseList(self, head):
         q.next = p
         head = q
         return head
-def recReverseList(self, prev, node, rhead):
-    if node == None:
-        rhead.append(None)
+def recReverseList(node):
+    if node == None or node.next == None:
         return node
-    if node.next == None:
-        rhead.append(node)
-        node.next = prev
-        return
-    self.recReverseList(node, node.next, rhead)
-    node.next = prev
+    new_head = recReverseList(node.next)
+    node.next.next = node
+    node.next = None
+    return new_head
+    
             
 
 
@@ -120,3 +118,9 @@ if __name__ == '__main__':
     printList(head)
     r = sol.isPalindrome(head)
     print(r)
+
+    lst = [1,2,3,4,5,6,7]
+    lst = build_list(lst)
+    printList(lst)
+    new_lst = recReverseList(lst)
+    printList(new_lst)
