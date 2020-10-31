@@ -8,7 +8,7 @@ class Solution:
                 return partitioin_helper(0, nums, visited, k-1, 0, tsum)
             
             for i in range(st, len(nums)):
-                if visited[i] == False:
+                if visited[i] == False and sum_so_far + nums[i] <= tsum:
                     visited[i] = True
                     if partitioin_helper(i+1, nums, visited, k, sum_so_far+nums[i], tsum):
                         return True
