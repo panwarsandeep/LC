@@ -2,11 +2,14 @@ from collections import defaultdict
 class Solution:
     def validPalindrome(self, s):
         def pal_helper(s, st, en, match):
+            while s[st] == s[en] and st < en:
+                st += 1
+                en -= 1
+            
             if st >= en:
                 return True
-            if s[st] == s[en]:
-                return pal_helper(s, st+1, en -1, match)
-            elif match == 0:
+        
+            if match == 0 and st < en:
                 return pal_helper(s, st+1, en, match+1) or pal_helper(s, st, en-1, match+1)
             
             return False
